@@ -6,9 +6,29 @@
 }
 
 .button {
-    margin: 10px 0 10px 0;
-    padding: 15px;
-    font-size: 16px;
-    border: 0;
-    font-family: "Roboto", sans-serif;
+    background: #a4ff31;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  padding: unset;
+  display: flex;
+  align-items: center;
+  color: black;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: rgba(0, 0, 0, 0);
+  border-right-color: rgba(0, 0, 0, 0);
+  border-bottom-color: rgba(0, 0, 0, 0);
+  border-left-color: rgba(0, 0, 0, 0);
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
   }
