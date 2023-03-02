@@ -9,6 +9,7 @@ export const PingButton: FC = () => {
 	const { connection } = useConnection();
 	const { publicKey, sendTransaction } = useWallet();
 	const [selectedOption, setSelectedOption] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
 	const handleOptionSelect = (event) => {
 		setSelectedOption(event.target.value);
@@ -16,6 +17,7 @@ export const PingButton: FC = () => {
 
 	const onClick = async () => {
 
+        setIsLoading(true);
 		if (!connection || !publicKey) { return }
 		const NFT_LENDING_V2 = new web3.PublicKey('A66HabVL3DzNzeJgcHYtRRNW1ZRMKwBfrdSR4kLsZ9DJ')
 		const ADMIN = new web3.PublicKey('9aTtUqAnuSMndCpjcPosRNf3fCkrTQAV8C8GERf3tZi3')
@@ -90,16 +92,15 @@ export const PingButton: FC = () => {
             }
         }
 		
-
 		//APP FEE
-		// const FEE = 0.001
-		// const feeAmount = amountToCompund*FEE
-		// const feeTx = web3.SystemProgram.transfer({
-		// 	fromPubkey: publicKey,
-		// 	toPubkey: new web3.PublicKey('tioEGUcmaUSRJwGkddEYZHuhnUG47uirBmds6aELE1x'),
-		// 	lamports: feeAmount*web3.LAMPORTS_PER_SOL
-		// })
-		// instructions.push(feeTx)
+		const FEE = 0.001
+		const feeAmount = Number((amountToCompund*FEE).toFixed(0))
+		const feeTx = web3.SystemProgram.transfer({
+			fromPubkey: publicKey,
+			toPubkey: new web3.PublicKey('tioEGUcmaUSRJwGkddEYZHuhnUG47uirBmds6aELE1x'),
+			lamports: feeAmount
+		})
+		instructions.push(feeTx)
 
 		// CREATE-SIGN-SEND TX
 		const transaction = new web3.Transaction()
@@ -108,13 +109,15 @@ export const PingButton: FC = () => {
             transaction.add(ix);
         }
 		
+        setIsLoading(false)
 
         sendTransaction(transaction, connection).then(sig => {
             console.log(sig)
+            
         })
 
 	}
-
+    if(isLoading) return <div className="loading"> Creating TX...</div>
 	return (
 		<div>
 			<div>

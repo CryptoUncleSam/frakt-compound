@@ -6,7 +6,7 @@ import * as walletAdapterWallets from '@solana/wallet-adapter-wallets';
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-    const endpoint = 'https://solana-mainnet.phantom.app/YBPpkkN4g91xDiAnTE9r0RcMkjg0sKUIWvAfoFVJ'
+    const endpoint = 'https://mainnet-beta.solflare.network/'
 	const wallets = [
 		new walletAdapterWallets.PhantomWalletAdapter(), 
 		new walletAdapterWallets.SolflareWalletAdapter(), 
