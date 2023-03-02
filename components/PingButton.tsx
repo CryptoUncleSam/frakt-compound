@@ -92,14 +92,14 @@ export const PingButton: FC = () => {
 		
 
 		//APP FEE
-		const FEE = 0.001
-		const feeAmount = amountToCompund*FEE
-		const feeTx = web3.SystemProgram.transfer({
-			fromPubkey: publicKey,
-			toPubkey: new web3.PublicKey('tioEGUcmaUSRJwGkddEYZHuhnUG47uirBmds6aELE1x'),
-			lamports: feeAmount*web3.LAMPORTS_PER_SOL
-		})
-		instructions.push(feeTx)
+		// const FEE = 0.001
+		// const feeAmount = amountToCompund*FEE
+		// const feeTx = web3.SystemProgram.transfer({
+		// 	fromPubkey: publicKey,
+		// 	toPubkey: new web3.PublicKey('tioEGUcmaUSRJwGkddEYZHuhnUG47uirBmds6aELE1x'),
+		// 	lamports: feeAmount*web3.LAMPORTS_PER_SOL
+		// })
+		// instructions.push(feeTx)
 
 		// CREATE-SIGN-SEND TX
 		const transaction = new web3.Transaction()
